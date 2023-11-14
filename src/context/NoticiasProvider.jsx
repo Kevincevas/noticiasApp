@@ -25,6 +25,7 @@ const NoticiasProvider = ({children}) => {
             consultarAPI()
         } catch (error) {
             console.log(error)
+            console.log('error url de la api')
         }
     }, [categoria])
 
@@ -42,6 +43,7 @@ const NoticiasProvider = ({children}) => {
             consultarAPI()
         } catch (error) {
             console.log(error)
+            console.log('error url de la api')
         }
     }, [pagina])
     
