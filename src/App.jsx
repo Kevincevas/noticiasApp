@@ -13,31 +13,29 @@ function App() {
   const { totalNoticias } = useNoticias()
   
   return (
-    <NoticiasProvider>
-      <Container>
+    <Container>
 
-        <header>
-          <Typography align='center' marginY={5} component='h1' variant='h3'>
-            Buscador de Noticias
-          </Typography>
-        </header>
+      <header>
+        <Typography align='center' marginY={5} component='h1' variant='h3'>
+          Buscador de Noticias
+        </Typography>
+      </header>
 
-        <Grid
-          container
-          direction='row'
-          justifyContent='center'
-          alignItems='center'
-        >
-          <Grid item xs={12} md={6}>
-            <Formulario />
-          </Grid>
+      <Grid
+        container
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+      >
+        <Grid item xs={12} md={6}>
+          <Formulario />
         </Grid>
+      </Grid>
 
-        { totalNoticias === 0 ? <BuscandoNoticia /> : <ListadoNoticias /> }
-        
+      { totalNoticias === 0 ? <BuscandoNoticia /> : <ListadoNoticias /> }
+      
 
-      </Container>
-    </NoticiasProvider>
+    </Container>
   )
 }
 
