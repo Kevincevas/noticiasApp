@@ -12,46 +12,41 @@ const NoticiasProvider = ({children}) => {
     const [buscando, setBuscando] = useState(false)
     
     useEffect(() => {
-        try {
-            const consultarAPI = async() => {
-                setBuscando(true)
+        const consultarAPI = async() => {
+            setBuscando(true)
 
-                const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=${import.meta.env.VITE_API_KEY}`
-    
-                const {data} = await axios(url)
-                setNoticias(data.articles)
-                setTotalNoticias(data.totalResults)
-                setPagina(1)
-                setBuscando(false)
-    
-            }
-    
-            consultarAPI()
-        } catch (error) {
-            console.log(error)
-            console.log('error url de la api')
+            const key = import.meta.env.VITE_API_KEY
+
+            const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=${key}`
+
+            const {data} = await axios(url)
+            setNoticias(data.articles)
+            setTotalNoticias(data.totalResults)
+            setPagina(1)
+            setBuscando(false)
+
         }
+
+        consultarAPI()
+
     }, [categoria])
 
     useEffect(() => {
-        try {
-            const consultarAPI = async() => {
-                setBuscando(true)
+        const consultarAPI = async() => {
+            setBuscando(true)
+            const key = import.meta.env.VITE_API_KEY
 
-                const url = `https://newsapi.org/v2/top-headlines?country=us&page=${pagina}&category=${categoria}&apiKey=${import.meta.env.VITE_API_KEY}`
-    
-                const {data} = await axios(url)
-                setNoticias(data.articles)
-                setTotalNoticias(data.totalResults)
-                setBuscando(false)
 
-            }
-    
-            consultarAPI()
-        } catch (error) {
-            console.log(error)
-            console.log('error url de la api')
+            const url = `https://newsapi.org/v2/top-headlines?country=us&page=${pagina}&category=${categoria}&apiKey=${key}`
+
+            const {data} = await axios(url)
+            setNoticias(data.articles)
+            setTotalNoticias(data.totalResults)
+            setBuscando(false)
+
         }
+
+        consultarAPI()
     }, [pagina])
     
 
