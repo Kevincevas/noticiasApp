@@ -14,6 +14,13 @@ export const ListadoNoticias = () => {
     const { noticias, totalNoticias, handleChangePagina, pagina } = useNoticias()
     const totalPaginas = Math.ceil(totalNoticias / 20) //Math.ceil: redondea hacia el numero superior (2.1 hacia 3)
     // console.log(totalPaginas)
+
+    const generarId = () => {
+        const random = Math.random().toString(36).substr(2)
+        const fecha = Date.now() .toString(36)
+    
+        return random + fecha
+    }
     
   return (
     <>
@@ -31,7 +38,7 @@ export const ListadoNoticias = () => {
             spacing={2}
         >
             {noticias.map(noticia => (
-                <Noticia key={noticia.url} noticia={noticia} />
+                <Noticia key={generarId()} noticia={noticia} />
             ))}
         </Grid>
 
