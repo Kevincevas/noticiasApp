@@ -11,7 +11,7 @@ import { Noticia } from './Noticia'
 
 export const ListadoNoticias = () => {
 
-    const { noticias, totalNoticias, handleChangePagina, pagina } = useNoticias()
+    const { noticias, totalNoticias, handleChangePagina, pagina, buscando } = useNoticias()
     const totalPaginas = Math.ceil(totalNoticias / 20) //Math.ceil: redondea hacia el numero superior (2.1 hacia 3)
     // console.log(totalPaginas)
 
@@ -24,14 +24,26 @@ export const ListadoNoticias = () => {
     
   return (
     <>
-        <Typography
-            textAlign={'center'}
-            marginY={5}
-            variant='h3'
-            component={'h2'}
-        >
-            Últimas Noticias
-        </Typography>
+        {buscando 
+        ? 
+            <Typography
+                textAlign={'center'}
+                marginY={5}
+                variant='h3'
+                component={'h2'}
+            >
+                Buscando Noticias
+            </Typography>
+        :
+            <Typography
+                textAlign={'center'}
+                marginY={5}
+                variant='h3'
+                component={'h2'}
+            >
+                Últimas Noticias
+            </Typography>
+        }
 
         <Grid
             container

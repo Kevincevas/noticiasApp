@@ -3,10 +3,15 @@ import { Container, Grid, Typography } from '@mui/material'
 import { Formulario } from './components/Formulario'
 import { NoticiasProvider } from './context/NoticiasProvider'
 import { ListadoNoticias } from './components/ListadoNoticias'
+import { useNoticias } from './hooks/useNoticias'
+import { BuscandoNoticia } from './components/BuscandoNoticia'
+
 
 
 function App() {
 
+  const { totalNoticias } = useNoticias()
+  
   return (
     <NoticiasProvider>
       <Container>
@@ -28,7 +33,8 @@ function App() {
           </Grid>
         </Grid>
 
-        <ListadoNoticias />
+        { totalNoticias === 0 ? <BuscandoNoticia /> : <ListadoNoticias /> }
+        
 
       </Container>
     </NoticiasProvider>
